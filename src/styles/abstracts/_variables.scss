@@ -1,0 +1,54 @@
+
+/*
+*  Set $use-silent-classes true to generate silent classes of the normal css classes
+*  Set $use-silent-classes false if you don't want to generate silent classes of the normal css classes
+*/
+$use-silent-classes:               true;
+//Type class
+$silent-class:                     "%";
+$css-class:                        ".";
+
+//colors
+$primary-color:                     #02a9f4;
+$secondary-color:                   #42bff7;
+$third-color:                       #71a9da;
+$fourth-color:                      #5785ad;
+$black-color:                       #1b1b1b;
+$white-color:                       #fff;
+$gray-color:                        #e9ecef;
+$dark-gray-color:                   #4e4e4e;
+$light-gray-color:                  #fcfcfc;
+$success-color:                     #28a745;
+$danger-color:                      #dc3545;
+$warning-color:                     #ffc107;
+$info-color:                        #17a2b8;
+$disable-color:                     #868e96;
+
+// Media Queries and grid settings
+
+$screen-extra-small:              	480px!default;
+$screen-small:                    	620px!default;
+$screen-medium:                   	768px!default;
+$screen-large:                    	1024px!default;
+$screen-extra-large:              	1280px!default;
+
+// Typography
+$font-family-sans-serif:            "Open Sans", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+$font-size-h1:                      36px;
+$font-size-h2:                      30px;
+$font-size-h3:                      28px;
+$font-size-h4:                      18px;
+$font-size-h5:                      14px;
+$font-size-h6:                      12px;
+
+//directions
+$directions-breakpoints :          ('top', 'bottom', 'left', 'right');
+$directions-y-breakpoints :        ('top', 'bottom');
+$directions-x-breakpoints :        ('left', 'right');
+
+//Margin
+$margin-base:                      40px;
+//Border
+$border-none:                      0px;
+$border-base-radius:               4px;

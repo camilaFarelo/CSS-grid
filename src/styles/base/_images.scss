@@ -1,0 +1,20 @@
+/*------------------------------------*\
+    IMAGES
+\*------------------------------------*/
+$imageSizes: (
+    "grid": "296x226",
+    "list": "240x210",
+    "medium": "364x364",
+    "large": "816x581",
+    "small": "155x155",
+    "thumb": "48x48"
+);
+
+@each $name, $value in $imageSizes {
+    $sizes: str-split($value, 'x');
+
+    .image--#{$name} {
+        height: #{nth($sizes, 2) + 'px'};
+        width: #{nth($sizes, 1) + 'px'};
+    }
+}

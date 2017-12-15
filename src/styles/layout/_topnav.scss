@@ -1,0 +1,26 @@
+/*------------------------------------*\
+    TOPNAV
+\*------------------------------------*/
+.menu-topnav {
+  position: sticky;
+  .navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+  }
+  li {
+    list-style: none;
+  }
+}
+
+.nav-collapse {
+  display: inline-block;
+}

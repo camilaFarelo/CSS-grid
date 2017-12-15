@@ -1,0 +1,49 @@
+
+/*------------------------------------*\
+   PADDING
+\*------------------------------------*/
+
+%vertical-padding {
+  padding: 10px 0;
+}
+
+%horizontal-padding {
+  padding: 0 10px;
+}
+
+$padding-size: (
+  "without" :  0px,
+  "nano" :     2px,
+  "micro" :    5px,
+  "small" :    10px,
+  "medium" :   20px,
+  "large" :    40px,
+);
+
+@each $name, $value in $padding-size{
+    //Css class
+    #{$css-class}padding--#{$name} {
+      padding: $value;
+    };
+  //silent class
+    @if $use-silent-classes == true {
+      #{$silent-class}padding--#{$name} {
+        padding: $value;
+      };
+   };
+};
+
+@each $name in $directions-breakpoints {
+  @each $size, $value in $padding-size {
+      //Css class
+      #{$css-class}padding--#{$name}-#{$size}{
+        padding-#{$name}: $value;
+      };
+      //silent class
+      @if $use-silent-classes == true {
+        #{$silent-class}padding--#{$name}-#{$size}{
+          padding-#{$name}: $value;
+        };
+      };
+    };
+};

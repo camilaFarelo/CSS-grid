@@ -1,0 +1,48 @@
+/*------------------------------------*\
+    Media Queries and grid settings
+\*------------------------------------*/
+$screen-extra-small:              	480px!default;
+$screen-small:                    	620px!default;
+$screen-medium:                   	768px!default;
+$screen-large:                    	1024px!default;
+$screen-extra-large:              	1280px!default;
+
+$screen:                          	"only screen";
+$extra-small:                       "only screen and (min-width: #{$screen-extra-small})";
+$small:                           	"only screen and (min-width: #{$screen-small})";
+$medium:                          	"only screen and (min-width: #{$screen-medium})";
+$large:                           	"only screen and (min-width: #{$screen-large})";
+$extra-large:                     	"only screen and (min-width: #{$screen-extra-large})";
+$extra-small-max:                   "only screen and (max-width: #{$screen-extra-small})";
+$small-max:                         "only screen and (max-width: #{$screen-small})";
+$medium-max:                        "only screen and (max-width: #{$screen-medium})";
+$large-max:                         "only screen and (max-width: #{$screen-large})";
+$extra-large-max:                   "only screen and (max-width: #{$screen-extra-large})";
+$landscape:                       	"only screen and (orientation: landscape)";
+$portrait:                        	"only screen and (orientation: portrait)";
+
+/**
+* Small
+*/
+@media #{$extra-small} {
+}
+/**
+* Small
+*/
+@media #{$small} {
+}
+/**
+* Medium
+*/
+@media #{$medium} {
+}
+/**
+* Large
+*/
+@media #{$large} {
+}
+/**
+* Extra-Large
+*/
+@media #{$extra-large} {
+}

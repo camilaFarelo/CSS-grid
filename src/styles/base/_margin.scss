@@ -1,0 +1,51 @@
+/*------------------------------------*\
+   MARGIN
+\*------------------------------------*/
+.margin-auto,
+%margin-auto {
+  margin: auto;
+}
+.margin-left-auto,
+%margin-left-auto {
+  margin-left: auto;
+}
+.margin-right-auto,
+%margin-right-auto {
+  margin-right: auto;
+}
+
+$margin-size : (
+  "without" :        0px,
+  "small" :          10px,
+  "medium" :         20px,
+  "large" :          40px,
+);
+
+@each $name, $value in $margin-size {
+  //CSS class
+  #{$css-class}margin--#{$name} {
+    margin: $value;
+  };
+  //silent class
+  @if $use-silent-classes == true {
+    #{$silent-class}margin--#{$name} {
+      margin: $value;
+    };
+  };
+};
+
+@each $name in $directions-breakpoints{
+  @each $size, $value in $margin-size {
+    //CSS class
+    #{$css-class}margin--#{$name}-#{$size}{
+      margin-#{$name}: $value;
+
+    };
+    //Silent Class
+    @if $use-silent-classes == true {
+      #{$silent-class}margin--#{$name}-#{$size}{
+        margin-#{$name}: $value;
+      };
+    };
+  };
+};

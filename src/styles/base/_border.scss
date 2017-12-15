@@ -1,0 +1,25 @@
+/*------------------------------------*\
+   BORDER
+\*------------------------------------*/
+
+$border-size : (
+  "without" :   0px,
+  "small" :     3px,
+  "medium" :    4px,
+  "large" :     5px,
+);
+
+@each $name in $directions-breakpoints {
+  @each $border, $value in $border-size {
+    //CSS class
+    #{$css-class}border--#{$name}-#{$border} {
+      border-#{$name}: $value
+    };
+    //silent class
+    @if $use-silent-classes == true {
+      #{$silent-class}border--#{$name}-#{$border} {
+        border-#{$name}: $value
+      };
+    };
+  };
+};

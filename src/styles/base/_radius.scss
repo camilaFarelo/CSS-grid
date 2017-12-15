@@ -1,0 +1,26 @@
+/*------------------------------------*\
+   BORDER RADIUS
+\*------------------------------------*/
+  $border-radius-size : (
+    "without" :       0px,
+    "small" :         3px,
+    "medium" :        4px,
+    "large" :         5px,
+  );
+
+@each $name in $directions-y-breakpoints {
+  @each $x in $directions-x-breakpoints {
+    @each $radius, $value in $border-radius-size {
+      //CSS class
+      #{$css-class}border--#{$name}-#{$x}-#{$radius} {
+        border-#{$name}-#{$x}-radius: $value
+      };
+      //Silent class
+      @if $use-silent-classes == true {
+        #{$silent-class}border--#{$name}-#{$x}-#{$radius} {
+          border-#{$name}-#{$x}-radius: $value
+        };
+      };
+    };
+  };
+};

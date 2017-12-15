@@ -1,0 +1,78 @@
+/*------------------------------------*\
+   TYPOGRAPHY
+\*------------------------------------*/
+$fontSizes: (
+    "atomic":         10px,
+    "micro":          20px,
+    "tiny":           30px,
+    "small":          40px,
+    "reduced":        50px,
+    "regular":        60px,
+    "increased":      70px,
+    "large":          80px,
+    "huge":           90px,
+    "giant":          100px
+);
+
+@each $name, $value in $fontSizes {
+    //Css class
+    #{$css-class}text--#{$name} {
+        font-size:$value;
+    };
+    //Silent class
+    @if $use-silent-classes == true {
+      #{$silent-class}text--#{$name} {
+          font-size:$value;
+      };
+   };
+};
+
+   /*------------------------------------*\
+      HEADING CLASSES
+   \*------------------------------------*/
+
+   .h1 {
+     font-size: $font-size-h1;
+   }
+   .h2 {
+     font-size: $font-size-h2;
+   }
+   .h3 {
+     font-size: $font-size-h3;
+   }
+   .h4 {
+     font-size: $font-size-h4;
+   }
+   .h5 {
+     font-size: $font-size-h5;
+   }
+   .h6 {
+     font-size: $font-size-h6;
+   }
+
+   /*------------------------------------*\
+     TEXT ALIGN
+   \*------------------------------------*/
+
+   .text-right {
+     text-align: right;
+   }
+   .text-left {
+     text-align: left;
+   }
+   .text-center {
+     text-align: center;
+   }
+
+   .highlight-text {
+     color: $fourth-color;
+     font-weight: normal;
+   }
+   .text-muted {
+     color: $disable-color;
+   }
+   .blockquote-footer {
+     display: block;
+     font-size: 80%;
+     color: $dark-gray-color;
+   }

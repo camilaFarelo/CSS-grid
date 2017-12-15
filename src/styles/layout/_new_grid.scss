@@ -1,0 +1,342 @@
+/*------------------------------------*\
+    $FULLSTACKLABS-GRIDS
+\*------------------------------------*/
+/**
+ * CONTENTS
+ * INTRODUCTION.........How the grid system works.
+ * VARIABLES............Your settings.
+ * MIXINS...............Library mixins.
+ * GRID SETUP...........Build the grid structure.
+ * WIDTHS...............Build our responsive widths around our breakpoints.
+ * PUSH.................Push classes.
+ * PULL.................Pull classes.
+ */
+
+ /*------------------------------------*\
+     $INTRODUCTION
+ \*------------------------------------*/
+ /**
+ * Fullstacklabs grids provides you with widths to suit a number of breakpoints.
+ * The grid caters to the following types of device:
+ *
+ * xs    -- small devices,  min-width: 480px
+ * sm    -- palm-based devices, small phones, min-width: 620px
+ * md    -- palm-based devices, like phones and samll tablets, min-width: 780px
+ * lg    -- palm-based devices, like phones and small tablets, max-width: 1024px
+ * xl    -- lap-based devices, like iPads or laptops, max-width: 1280px
+ */
+
+ /*------------------------------------*\
+     $VARIABLES
+ \*------------------------------------*/
+ /**
+  * If you are building a non-responsive site but would still like to use
+  * csswizardry-grids, set this to ‘false’:
+  */
+ $responsive:            true;
+
+ /**
+  * You can divide the page into a series of equal columns or rows.
+  * this are the values
+  */
+  $default-columns-divisions : (
+    "1" : 100%,
+    "2" : repeat(2, 1fr),
+    "3" : repeat(3, 1fr),
+    "4" : repeat(4, 1fr),
+    "5" : repeat(5, 1fr),
+    "6" : repeat(6, 1fr),
+    "7" : repeat(7, 1fr),
+    "8" : repeat(8, 1fr),
+    "9" : repeat(9, 1fr),
+    "10": repeat(10, 1fr),
+    "11": repeat(11, 1fr),
+    "12": repeat(12, 1fr),
+  );
+
+  $default-rows-divisions : (
+    "2" : repeat(2, 1fr),
+    "3" : repeat(3, 1fr),
+    "4" : repeat(4, 1fr),
+    "5" : repeat(5, 1fr),
+    "6" : repeat(6, 1fr),
+    "7" : repeat(7, 1fr),
+    "8" : repeat(8, 1fr),
+    "9" : repeat(9, 1fr),
+    "10": repeat(10, 1fr),
+    "11": repeat(11, 1fr),
+    "12": repeat(12, 1fr),
+  );
+
+ /**
+  * Would you like to have custom grid?
+  * set this to ‘false’ if you want to use the default grid
+  */
+  $custom-grid:          true;
+
+  /**
+  * this would be the default value for the custom grid
+  */
+  $fullstacklabs_grid_custom: (
+    "xs": (
+       "breakpoint"          :0,
+       "gap_grid"            :2rem,
+       "repeat_columns"      :1,
+       "repeat_columns_size" :1fr,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
+       "grid_columns_gap"    :40px,
+       "grid_rows_gap"       :5px,
+       "justify_content"     : space-evenly,
+       "justify_items"       : stretch,
+       "align_content"       : center,
+       "align_items"         : stretch,
+       "grid_column"         : auto,
+       "grid_row"            : auto,
+       "justify_self"        : auto,
+       "align_self"          : auto,
+    ),
+    "sm": (
+       "breakpoint"          :640px,
+       "gap_grid"            :2rem,
+       "repeat_columns"      :2,
+       "repeat_columns_size" :1fr,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
+       "grid_columns_gap"    :5px,
+       "grid_rows_gap"       :5px,
+       "justify_content"     : space-evenly,
+       "justify_items"       : stretch,
+       "align_content"       : center,
+       "align_items"         : stretch,
+       "grid_column"         : auto,
+       "grid_row"            : auto,
+       "justify_self"        : auto,
+       "align_self"          : auto,
+    ),
+    "md": (
+       "breakpoint"          :860px,
+       "gap_grid"            :2rem,
+       "repeat_columns"      :3,
+       "repeat_columns_size" :1fr,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
+       "grid_columns_gap"    :5px,
+       "grid_rows_gap"       :5px,
+       "justify_content"     : space-evenly,
+       "justify_items"       : stretch,
+       "align_content"       : center,
+       "align_items"         : stretch,
+       "grid_column"         : auto,
+       "grid_row"            : auto,
+       "justify_self"        : auto,
+       "align_self"          : auto,
+    ),
+    "lg": (
+       "breakpoint"          :1080px,
+       "gap_grid"            :2rem,
+       "repeat_columns"      :4,
+       "repeat_columns_size" :1fr,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
+       "grid_columns_gap"    :5px,
+       "grid_rows_gap"       :5px,
+       "justify_content"     : space-evenly,
+       "justify_items"       : stretch,
+       "align_content"       : center,
+       "align_items"         : stretch,
+       "grid_column"         : auto,
+       "grid_row"            : auto,
+       "justify_self"        : auto,
+       "align_self"          : auto,
+    ),
+    "xl": (
+       "breakpoint"          :1300px,
+       "gap-grid"            :2rem,
+       "repeat_columns"      :4,
+       "repeat_columns_size" :1fr,
+       "_ms_grid_columns"    :100px 10px 100px 10px 100px 10px 100px 100px,
+       "grid_columns_gap"    :40px,
+       "grid_rows_gap"       :5px,
+       "justify_content"     : space-evenly,
+       "justify_items"       : stretch,
+       "align_content"       : center,
+       "align_items"         : stretch,
+       "grid_column"         : auto,
+       "grid_row"            : auto,
+       "justify_self"        : auto,
+       "align_self"          : auto,
+    ),
+  );
+
+  /**
+   * Define your breakpoints. The first value is the prefix that shall be used for
+   * your classes (e.g. `.palm--one-half`), the second value is the media query
+   * that the breakpoint fires at.
+   */
+   $breakpoints: (
+       'lg' '(max-width: #{$screen-large})',
+       'md' '(max-width: #{$screen-medium})',
+       'sm' '(max-width: #{$screen-small})',
+       'xs' '(max-width: #{$screen-extra-small})'
+   )!default;
+
+
+  /**
+   * Define which namespaced breakpoints you would like to generate for each of
+   * widths, push and pull. This is handy if you only need pull on, say, desk, or
+   * you only need a new width breakpoint at mobile sizes. It allows you to only
+   * compile as much CSS as you need. All are turned on by default, but you can
+   * add and remove breakpoints at will.
+   *
+   */
+   $breakpoint-has-widths: ('xs','sm', 'md', 'lg')!default;
+
+
+  /*------------------------------------*\
+      $MIXINS
+  \*------------------------------------*/
+  /**
+   * These mixins are for the library to use only, you should not need to modify
+   * them at all.
+   *
+   * Enclose a block of code with a media query as named in `$breakpoints`.
+   */
+   @mixin grid-media-query($media-query){
+       $breakpoint-found: false;
+
+       @each $breakpoint in $breakpoints{
+           $name: nth($breakpoint, 1);
+           $declaration: nth($breakpoint, 2);
+
+           @if $media-query == $name and $declaration{
+               $breakpoint-found: true;
+
+               @media only screen and #{$declaration}{
+                   @content;
+               }
+           }
+       }
+   }
+
+  @mixin item-grid-column($starCol, $endCol) {
+    @for $i from $starCol through $endCol {
+      .item-grid:nth-child(#{$i}) {
+        grid-column: $i;
+        -ms-grid-column: $i;
+      }
+    }
+  }
+
+  @mixin customs-grid($class, ) {
+
+  };
+
+  @mixin custom-grid-breakpoint($breakpoint) {
+    @if ($breakpoint != 0) {
+      @media (min-width: $breakpoint) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  };
+
+
+  /*------------------------------------*\
+      $WIDTHS
+  \*------------------------------------*/
+  /**
+  * COLMNS
+  */
+  @each $name, $value in $default-columns-divisions {
+    //CSS class
+    #{$css-class}cols-#{$name}-default {
+      display: grid;
+      grid-template-columns: $value;
+      -ms-grid-columns: $value;
+    };
+  };
+
+  @if $responsive == true {
+    @each $size in $breakpoint-has-widths {
+      @include grid-media-query($size) {
+        @each $name, $value in $default-columns-divisions {
+           //CSS class
+          #{$css-class}#{$size}--cols-#{$name}-default {
+            justify-items: stretch;
+            display: grid;
+            grid-template-columns: $value;
+            -ms-grid-columns: $value;
+          };
+        };
+      };
+    };
+  };
+
+  /**
+  * ROWS
+  */
+  @each $name, $value in $default-rows-divisions {
+    //CSS class
+    #{$css-class}rows-#{$name} {
+      display: grid;
+      grid-template-rows: $value;
+      -ms-grid-rows: $value;
+    };
+  };
+  @if $responsive == true {
+    @each $size in $breakpoint-has-widths {
+      @include grid-media-query($size) {
+         @each $name, $value in $default-rows-divisions {
+           //CSS class
+           #{$css-class}#{$size}--rows-#{$name} {
+             display: grid;
+             grid-template-rows: $value;
+             -ms-grid-rows: $value;
+           };
+         };
+      };
+    };
+  };
+
+  /**
+  * Custom Grid
+  */
+
+  @if $custom-grid == true {
+    .custom-grid {
+      display: grid;
+      display: -ms-grid;
+      @each $size, $data in $fullstacklabs_grid_custom {
+        @include custom-grid-breakpoint(map-get($data, "breakpoint")) {
+          grid-template-columns: repeat(map-get($data, "repeat_columns"), map-get($data, "repeat_columns_size"));
+          -ms-grid-columns: map-get($data, "_ms_grid_columns");
+          grid-template-rows: none;
+          -ms-grid-rows: none;
+          grid-gap: map-get($data, "gap_grid");
+          justify-content: map-get($data, "justify_content");
+          justify-items: map-get($data, "justify_items");
+          align-content: map-get($data, "align_content");
+          align-items: map-get($data, "align_items");
+        }
+      }
+      @include item-grid-column(1, 4);
+      .item-grid:nth-child(5) {
+        -ms-grid-row: 2;
+        grid-row: 2;
+      }
+    }
+    /**
+    * Browsers that don't support CSS variables
+    */
+    // .no-cssall .custom-grid {
+    //   display: -ms-grid;
+    //   -ms-grid-columns: 1fr 1fr 1fr 1fr;             /* adjusted */
+    //   -ms-grid-rows: 1fr;        /* adjusted */
+    //   grid-gap: 30px;
+    //
+    //   @include item-grid-column(1, 4);
+    //   .item-grid:nth-child(5) {
+    //     -ms-grid-row: 2;
+    //     grid-row: 2;
+    //   }
+    //
+    // }
+  }

@@ -1,0 +1,14 @@
+/*------------------------------------*\
+    SIDEBAR
+\*------------------------------------*/
+
+.menu-sidebar {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5px;
+  z-index: 1000;
+  max-height: calc(100vh - 4rem);
+  li {
+    list-style: none;
+  }
+}
