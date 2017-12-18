@@ -1,7 +1,12 @@
 .home {
-  @include customs-grid-cols(1fr 1fr 1fr 1fr, 1, 4);
+  @include customs-grid-cols(1fr 4fr, 4, item);
 }
 .row {
   @include item-row(2);
   @include item-col(2);
+}
+
+.side {
+  @include customs-grid-cols(1fr 4fr 1fr, 3, side-item);
+  @include rows-size(100px);
 }

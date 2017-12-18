@@ -41,94 +41,44 @@
   */
   $default-columns-divisions : (
     "1": (
-      "gap_grid"            :2rem,
       "repeat_columns"      :1,
       "_ms_grid_columns"    :1fr,
     ),
     "2": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :2,
        "_ms_grid_columns"    :1fr 1fr,
     ),
     "3": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :3,
        "_ms_grid_columns"    :1fr 1fr 1fr,
     ),
     "4": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :4,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
     ),
     "5": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :5,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr,
     ),
     "6": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :6,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr,
     ),
     "7": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :7,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr,
     ),
     "8": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :8,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
     ),
     "9": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :9,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
     ),
     "10": (
-       "gap_grid"            :2rem,
        "repeat_columns"      :10,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
-    ),
-    "1-2": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 2fr,
-    ),
-    "1-4": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 4fr,
-    ),
-    "1-6": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 6fr,
-    ),
-    "1-8": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 8fr,
-    ),
-    "2-1": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 2fr,
-    ),
-    "4-1": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 4fr,
-    ),
-    "6-1": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 6fr,
-    ),
-    "8-1": (
-      "gap_grid"            :2rem,
-      "repeat_columns"      :2,
-      "_ms_grid_columns"    :1fr 8fr,
     ),
   );
 
@@ -301,17 +251,28 @@
       }
     }
   }
-  @mixin customs-grid-cols($columns, $startCol, $endCol) {
+  @mixin custom-item-col($endCol, $item-class) {
+    @for $i from 1 through $endCol {
+      .#{$item-class}:nth-child(#{$i}) {
+        grid-column: $i;
+        -ms-grid-column: $i;
+      }
+    }
+  }
+  @mixin customs-grid-cols($columns, $endCol, $item-class) {
     display: grid;
     display: -ms-grid;
     grid-template-columns: $columns;
     -ms-grid-columns: $columns;
     justify-content: space-evenly;
     justify-items: stretch;
-    align-content: center;
     align-items: auto;
-    @include item-grid-column($startCol, $endCol);
+    @include custom-item-col($endCol, $item-class);
   };
+  @mixin rows-size($size) {
+    grid-template-rows: $size;
+    -ms-grid-rows: $size;
+  }
 
   @mixin item-row($row) {
     grid-row: $row;
