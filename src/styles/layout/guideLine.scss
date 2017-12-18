@@ -1,0 +1,7 @@
+.home {
+  @include customs-grid-cols(1fr 1fr 1fr 1fr, 1, 4);
+}
+.row {
+  @include item-row(2);
+  @include item-col(2);
+}

@@ -40,18 +40,96 @@
   * this are the values
   */
   $default-columns-divisions : (
-    "1" : 100%,
-    "2" : repeat(2, 1fr),
-    "3" : repeat(3, 1fr),
-    "4" : repeat(4, 1fr),
-    "5" : repeat(5, 1fr),
-    "6" : repeat(6, 1fr),
-    "7" : repeat(7, 1fr),
-    "8" : repeat(8, 1fr),
-    "9" : repeat(9, 1fr),
-    "10": repeat(10, 1fr),
-    "11": repeat(11, 1fr),
-    "12": repeat(12, 1fr),
+    "1": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :1,
+      "_ms_grid_columns"    :1fr,
+    ),
+    "2": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :1fr 1fr,
+    ),
+    "3": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :3,
+       "_ms_grid_columns"    :1fr 1fr 1fr,
+    ),
+    "4": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :4,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
+    ),
+    "5": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :5,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr,
+    ),
+    "6": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :6,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr,
+    ),
+    "7": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :7,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr,
+    ),
+    "8": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :8,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
+    ),
+    "9": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :9,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
+    ),
+    "10": (
+       "gap_grid"            :2rem,
+       "repeat_columns"      :10,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
+    ),
+    "1-2": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 2fr,
+    ),
+    "1-4": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 4fr,
+    ),
+    "1-6": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 6fr,
+    ),
+    "1-8": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 8fr,
+    ),
+    "2-1": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 2fr,
+    ),
+    "4-1": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 4fr,
+    ),
+    "6-1": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 6fr,
+    ),
+    "8-1": (
+      "gap_grid"            :2rem,
+      "repeat_columns"      :2,
+      "_ms_grid_columns"    :1fr 8fr,
+    ),
   );
 
   $default-rows-divisions : (
@@ -151,7 +229,7 @@
        "gap-grid"            :2rem,
        "repeat_columns"      :4,
        "repeat_columns_size" :1fr,
-       "_ms_grid_columns"    :100px 10px 100px 10px 100px 10px 100px 100px,
+       "_ms_grid_columns"    :1fr 1fr 1fr 1fr,
        "grid_columns_gap"    :40px,
        "grid_rows_gap"       :5px,
        "justify_content"     : space-evenly,
@@ -223,10 +301,26 @@
       }
     }
   }
-
-  @mixin customs-grid($class, ) {
-
+  @mixin customs-grid-cols($columns, $startCol, $endCol) {
+    display: grid;
+    display: -ms-grid;
+    grid-template-columns: $columns;
+    -ms-grid-columns: $columns;
+    justify-content: space-evenly;
+    justify-items: stretch;
+    align-content: center;
+    align-items: auto;
+    @include item-grid-column($startCol, $endCol);
   };
+
+  @mixin item-row($row) {
+    grid-row: $row;
+    -ms-grid-row: $row;
+  }
+  @mixin item-col($column) {
+    grid-column: $column;
+    -ms-grid-column: $column;
+  }
 
   @mixin custom-grid-breakpoint($breakpoint) {
     @if ($breakpoint != 0) {
@@ -245,25 +339,27 @@
   /**
   * COLMNS
   */
-  @each $name, $value in $default-columns-divisions {
+  @each $name, $data in $default-columns-divisions {
     //CSS class
     #{$css-class}cols-#{$name}-default {
       display: grid;
-      grid-template-columns: $value;
-      -ms-grid-columns: $value;
+      display: -ms-grid;
+      grid-template-columns: map-get($data, "_ms_grid_columns");
+      -ms-grid-columns: map-get($data, "_ms_grid_columns");
+      @include item-grid-column(1, map-get($data, "repeat_columns"));
     };
   };
 
   @if $responsive == true {
     @each $size in $breakpoint-has-widths {
       @include grid-media-query($size) {
-        @each $name, $value in $default-columns-divisions {
+        @each $name, $data in $default-columns-divisions {
            //CSS class
           #{$css-class}#{$size}--cols-#{$name}-default {
             justify-items: stretch;
             display: grid;
-            grid-template-columns: $value;
-            -ms-grid-columns: $value;
+            grid-template-columns: map-get($data, "_ms_grid_columns");
+            -ms-grid-columns: map-get($data, "_ms_grid_columns");
           };
         };
       };
@@ -299,8 +395,6 @@
   /**
   * Custom Grid
   */
-
-  @if $custom-grid == true {
     .custom-grid {
       display: grid;
       display: -ms-grid;
@@ -323,20 +417,3 @@
         grid-row: 2;
       }
     }
-    /**
-    * Browsers that don't support CSS variables
-    */
-    // .no-cssall .custom-grid {
-    //   display: -ms-grid;
-    //   -ms-grid-columns: 1fr 1fr 1fr 1fr;             /* adjusted */
-    //   -ms-grid-rows: 1fr;        /* adjusted */
-    //   grid-gap: 30px;
-    //
-    //   @include item-grid-column(1, 4);
-    //   .item-grid:nth-child(5) {
-    //     -ms-grid-row: 2;
-    //     grid-row: 2;
-    //   }
-    //
-    // }
-  }
