@@ -31,11 +31,12 @@
   "dependencies": {
     "Modernizr": "https://modernizr.com/download?backgroundblendmode-backgroundcliptext-backgroundsize-bgpositionshorthand-bgpositionxy-bgrepeatspace_bgrepeatround-bgsizecover-borderimage-borderradius-boxshadow-boxsizing-checked-cssall-cssanimations-csscalc-csschunit-csscolumns-cssescape-cssexunit-cssfilters-cssgradients-cssgrid_cssgridlegacy-csshyphens_softhyphens_softhyphensfind-cssinvalid-cssmask-csspointerevents-csspositionsticky-csspseudoanimations-csspseudotransitions-cssreflections-cssremunit-cssresize-cssscrollbar-csstransforms-csstransforms3d-csstransformslevel2-csstransitions-cssvalid-cssvhunit-cssvmaxunit-cssvminunit-cssvwunit-cubicbezierrange-display_runin-displaytable-ellipsis-flexbox-flexboxlegacy-flexboxtweener-generatedcontent-hsla-lastchild-mediaqueries-multiplebgs-nthchild-objectfit-opacity-overflowscrolling-regions-rgba-siblinggeneral-subpixelfont-supports-target-textalignlast-textshadow-userselect-setclasses",
     "install": "^0.10.2",
-    "modernizr": "^3.5.0",
     "object-assign": "4.1.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
+    "react-fontawesome": "^1.6.1",
     "react-redux": "5.0.5",
+    "react-router": "^4.2.0",
     "react-router-dom": "4.2.2",
     "react-router-redux": "5.0.0-alpha.6",
     "redux": "3.6.0",

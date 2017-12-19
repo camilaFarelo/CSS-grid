@@ -4,6 +4,9 @@ import Documentation from './containers/Documentation'
 import { createStore, compose, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import Example1 from './containers/Example-1';
+import Example2 from './containers/Example-2';
+import Example3 from './containers/Example-3';
 
 class App extends Component {
   render() {
@@ -11,6 +14,9 @@ class App extends Component {
       <Provider>
         <BrowserRouter>
           <Switch>
+            <Route path='/example1' component={Example1} />
+            <Route path='/example2' component={Example2} />
+            <Route path='/example3' component={Example3} />
             <Route path='/' component={Documentation} />
           </Switch>
         </BrowserRouter>

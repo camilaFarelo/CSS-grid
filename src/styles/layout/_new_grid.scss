@@ -80,6 +80,34 @@
        "repeat_columns"      :10,
        "_ms_grid_columns"    :1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr,
     ),
+    "2-10": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :2fr 10fr,
+    ),
+    "3-9": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :3fr 9fr,
+    ),
+    "4-8": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :4fr 8fr,
+    ),
+    "5-7": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :5fr 7fr,
+    ),
+    "7-5": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :7fr 5fr,
+    ),
+    "8-4": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :8fr 4fr,
+    ),
+    "10-2": (
+       "repeat_columns"      :2,
+       "_ms_grid_columns"    :10fr 2fr,
+    ),
   );
 
   $default-rows-divisions : (
@@ -302,7 +330,7 @@
   */
   @each $name, $data in $default-columns-divisions {
     //CSS class
-    #{$css-class}cols-#{$name}-default {
+    #{$css-class}cols-#{$name} {
       display: grid;
       display: -ms-grid;
       grid-template-columns: map-get($data, "_ms_grid_columns");
@@ -316,7 +344,7 @@
       @include grid-media-query($size) {
         @each $name, $data in $default-columns-divisions {
            //CSS class
-          #{$css-class}#{$size}--cols-#{$name}-default {
+          #{$css-class}#{$size}--cols-#{$name} {
             justify-items: stretch;
             display: grid;
             grid-template-columns: map-get($data, "_ms_grid_columns");

@@ -1,0 +1,41 @@
+.header {
+  background-color: #355C7D;
+  width: 100%;
+  height: 60px;
+}
+.content-1 {
+  @include customs-grid-cols(2fr 7fr, 2, content-item);
+  @include rows-size(85vh);
+  .nav {
+    background-color: #c06c84;
+  }
+  .content {
+    background-color: #f67280;
+  }
+}
+
+.footer {
+  background-color: #6c5b7b;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 60px;
+}
+
+.content-2 {
+  @include customs-grid-cols(1fr 7fr 1fr, 3, content-item);
+  @include rows-size(85vh);
+  .content-item:nth-child(1) {
+    background-color: #f67280;
+      @include item-col(2);
+  }
+}
+.content-3 {
+  @include customs-grid-cols(1fr 2fr 1fr, 3, content-item);
+  @include rows-size(90vh);
+  .content-item {
+    background-color: #f67280;
+    border: solid 1px #cccccc;
+  }
+}
