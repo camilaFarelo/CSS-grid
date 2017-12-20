@@ -279,15 +279,44 @@
       }
     }
   }
-  @mixin custom-item-col($endCol, $item-class) {
-    @for $i from 1 through $endCol {
-      .#{$item-class}:nth-child(#{$i}) {
-        grid-column: $i;
-        -ms-grid-column: $i;
+  @mixin custom-item-col($endCol, $item-class, $totalItems) {
+    @for $i from 1 through $totalItems {
+      @if $i <= $endCol {
+        .#{$item-class}:nth-child(#{$i}) {
+          grid-column: $i;
+          -ms-grid-column: $i;
+        }
+      } @else if $i >= $endCol {
+        .#{$item-class}:nth-child(#{$i}){
+          grid-column: $i - $endCol;
+          -ms-grid-column: $i - $endCol;
+          grid-row: 2;
+          -ms-grid-row: 2;
+        }
       }
     }
   }
-  @mixin customs-grid-cols($columns, $endCol, $item-class) {
+  // @mixin custom-item-col($totalCols, $item-class, $totalItems) {
+  //   @for $i from 1 through $totalItems {
+  //     @while $i < $totalCols {
+  //       .#{$item-class}:nth-child(#{$i}) {
+  //         grid-column: $i;
+  //         -ms-grid-column: $i;
+  //         grid-row: 1;
+  //         -ms-grid-row: 1;
+  //       }
+  //     }
+  //   }
+  //   @while $i > $totalCols {
+  //     .#{$item-class}:nth-child(#{$i}) {
+  //       grid-column: $i;
+  //       -ms-grid-column: $i;
+  //       grid-row: 2;
+  //       -ms-grid-row: 2;
+  //     }
+  //   }
+  // }
+  @mixin customs-grid-cols($columns, $endCol, $item-class, $totalItems) {
     display: grid;
     display: -ms-grid;
     grid-template-columns: $columns;
@@ -295,7 +324,7 @@
     justify-content: space-evenly;
     justify-items: stretch;
     align-items: auto;
-    @include custom-item-col($endCol, $item-class);
+    @include custom-item-col($endCol, $item-class, $totalItems);
   };
   @mixin rows-size($size) {
     grid-template-rows: $size;
@@ -349,6 +378,7 @@
             display: grid;
             grid-template-columns: map-get($data, "_ms_grid_columns");
             -ms-grid-columns: map-get($data, "_ms_grid_columns");
+            @include item-grid-column(1, map-get($data, "repeat_columns"));
           };
         };
       };
@@ -401,8 +431,4 @@
         }
       }
       @include item-grid-column(1, 4);
-      .item-grid:nth-child(5) {
-        -ms-grid-row: 2;
-        grid-row: 2;
-      }
     }

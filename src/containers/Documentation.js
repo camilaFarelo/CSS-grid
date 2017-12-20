@@ -124,6 +124,15 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-10-2'}</div>
           <div className="item-grid panel">{'cols-10-2'}</div>
         </div>
+        <h1>Custom Grid</h1>
+          <div className="home">
+            <div className="item panel">{'item1'}</div>
+            <div className="item panel">{'item2'}</div>
+            <div className="item panel">{'item3'}</div>
+            <div className="item panel">{'item4'}</div>
+            <div className="item panel">{'item5'}</div>
+            <div className="item panel">{'item6'}</div>
+          </div>
       </div>
     )
   }

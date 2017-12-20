@@ -4,7 +4,7 @@
   height: 60px;
 }
 .content-1 {
-  @include customs-grid-cols(2fr 7fr, 2, content-item);
+  @include customs-grid-cols(2fr 7fr, 2, content-item, 10);
   @include rows-size(85vh);
   .nav {
     background-color: #c06c84;
@@ -24,7 +24,7 @@
 }
 
 .content-2 {
-  @include customs-grid-cols(1fr 7fr 1fr, 3, content-item);
+  @include customs-grid-cols(1fr 7fr 1fr, 3, content-item, 10);
   @include rows-size(85vh);
   .content-item:nth-child(1) {
     background-color: #f67280;
@@ -32,7 +32,7 @@
   }
 }
 .content-3 {
-  @include customs-grid-cols(1fr 2fr 1fr, 3, content-item);
+  @include customs-grid-cols(1fr 2fr 1fr, 3, content-item, 10);
   @include rows-size(90vh);
   .content-item {
     background-color: #f67280;

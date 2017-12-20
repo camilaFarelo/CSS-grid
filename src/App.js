@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Documentation from './containers/Documentation'
-import { createStore, compose, applyMiddleware } from 'redux'
+import Documentation from './containers/Documentation';
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk';
 import Example1 from './containers/Example-1';
 import Example2 from './containers/Example-2';
 import Example3 from './containers/Example-3';
