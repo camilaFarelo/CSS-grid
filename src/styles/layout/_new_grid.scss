@@ -7,6 +7,7 @@
  * VARIABLES............Your settings.
  * MIXINS...............Library mixins.
  * GRID SETUP...........Build the grid structure.
+ * IE GRID..............Build the grid structure.
  * WIDTHS...............Build our responsive widths around our breakpoints.
  * PUSH.................Push classes.
  * PULL.................Pull classes.
@@ -34,7 +35,11 @@
   * csswizardry-grids, set this to ‘false’:
   */
  $responsive:            true;
-
+ /**
+  * If you are building a website that will work in IE and Edge
+  * set $ie-grid to ‘false’:
+  */
+  $ie-grid:             true;
  /**
   * You can divide the page into a series of equal columns or rows.
   * this are the values
@@ -296,26 +301,7 @@
       }
     }
   }
-  // @mixin custom-item-col($totalCols, $item-class, $totalItems) {
-  //   @for $i from 1 through $totalItems {
-  //     @while $i < $totalCols {
-  //       .#{$item-class}:nth-child(#{$i}) {
-  //         grid-column: $i;
-  //         -ms-grid-column: $i;
-  //         grid-row: 1;
-  //         -ms-grid-row: 1;
-  //       }
-  //     }
-  //   }
-  //   @while $i > $totalCols {
-  //     .#{$item-class}:nth-child(#{$i}) {
-  //       grid-column: $i;
-  //       -ms-grid-column: $i;
-  //       grid-row: 2;
-  //       -ms-grid-row: 2;
-  //     }
-  //   }
-  // }
+
   @mixin customs-grid-cols($columns, $endCol, $item-class, $totalItems) {
     display: grid;
     display: -ms-grid;
@@ -359,13 +345,15 @@
   */
   @each $name, $data in $default-columns-divisions {
     //CSS class
-    #{$css-class}cols-#{$name} {
-      display: grid;
-      display: -ms-grid;
-      grid-template-columns: map-get($data, "_ms_grid_columns");
-      -ms-grid-columns: map-get($data, "_ms_grid_columns");
-      @include item-grid-column(1, map-get($data, "repeat_columns"));
-    };
+    .cssgrid {
+      #{$css-class}cols-#{$name} {
+        display: grid;
+        display: -ms-grid;
+        grid-template-columns: map-get($data, "_ms_grid_columns");
+        -ms-grid-columns: map-get($data, "_ms_grid_columns");
+        @include item-grid-column(1, map-get($data, "repeat_columns"));
+      };
+    }
   };
 
   @if $responsive == true {
@@ -373,13 +361,15 @@
       @include grid-media-query($size) {
         @each $name, $data in $default-columns-divisions {
            //CSS class
-          #{$css-class}#{$size}--cols-#{$name} {
-            justify-items: stretch;
-            display: grid;
-            grid-template-columns: map-get($data, "_ms_grid_columns");
-            -ms-grid-columns: map-get($data, "_ms_grid_columns");
-            @include item-grid-column(1, map-get($data, "repeat_columns"));
-          };
+          .cssgrid {
+            #{$css-class}#{$size}--cols-#{$name} {
+              justify-items: stretch;
+              display: grid;
+              grid-template-columns: map-get($data, "_ms_grid_columns");
+              -ms-grid-columns: map-get($data, "_ms_grid_columns");
+              @include item-grid-column(1, map-get($data, "repeat_columns"));
+            };
+          }
         };
       };
     };
@@ -390,22 +380,26 @@
   */
   @each $name, $value in $default-rows-divisions {
     //CSS class
-    #{$css-class}rows-#{$name} {
-      display: grid;
-      grid-template-rows: $value;
-      -ms-grid-rows: $value;
-    };
+    .cssgrid {
+      #{$css-class}rows-#{$name} {
+        display: grid;
+        grid-template-rows: $value;
+        -ms-grid-rows: $value;
+      };
+    }
   };
   @if $responsive == true {
     @each $size in $breakpoint-has-widths {
       @include grid-media-query($size) {
          @each $name, $value in $default-rows-divisions {
            //CSS class
-           #{$css-class}#{$size}--rows-#{$name} {
-             display: grid;
-             grid-template-rows: $value;
-             -ms-grid-rows: $value;
-           };
+           .cssgrid {
+             #{$css-class}#{$size}--rows-#{$name} {
+               display: grid;
+               grid-template-rows: $value;
+               -ms-grid-rows: $value;
+             };
+          }
          };
       };
     };
@@ -414,6 +408,7 @@
   /**
   * Custom Grid
   */
+  .cssgrid {
     .custom-grid {
       display: grid;
       display: -ms-grid;
@@ -431,4 +426,228 @@
         }
       }
       @include item-grid-column(1, 4);
+    }
+  }
+
+    /*------------------------------------*\
+        $IE-GRID
+    \*------------------------------------*/
+    .no-cssgrid {
+      .cols-1, .xs--cols-1, .sm--cols-1,
+      .md--cols-1, .lg--cols-1, .xl--cols-1 {
+        & > .item-grid {
+          max-width: 100%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-2, .xs--cols-2, .sm--cols-2,
+      .md--cols-2, .lg--cols-2, .xl--cols-2 {
+        & > .item-grid {
+          max-width: 50%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-3, .xs--cols-3, .sm--cols-3,
+      .md--cols-3, .lg--cols-3, .xl--cols-3 {
+        & > .item-grid {
+          max-width: 33.333333%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-4, .xs--cols-4, .sm--cols-4,
+      .md--cols-4, .lg--cols-4, .xl--cols-4 {
+        & > .item-grid {
+          max-width: 25%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-5, .xs--cols-5, .sm--cols-5,
+      .md--cols-5, .lg--cols-5, .xl--cols-5 {
+        & > .item-grid {
+          max-width: 20%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-6, .xs--cols-6, .sm--cols-6,
+      .md--cols-6, .lg--cols-6, .xl--cols-6 {
+        & > .item-grid {
+          max-width: 16.6666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-7, .xs--cols-7, .sm--cols-7,
+      .md--cols-7, .lg--cols-7, .xl--cols-7 {
+        & > .item-grid {
+          max-width: 14.285714285714286%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-8, .xs--cols-8, .sm--cols-8,
+      .md--cols-8, .lg--cols-8, .xl--cols-8 {
+        & > .item-grid {
+          max-width: 12.5%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-9, .xs--cols-9, .sm--cols-9,
+      .md--cols-9, .lg--cols-9, .xl--cols-9 {
+        & > .item-grid {
+          max-width: 11.1111111111%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-10, .xs--cols-10, .sm--cols-10,
+      .md--cols-10, .lg--cols-10, .xl--cols-10 {
+        & > .item-grid {
+          max-width: 10%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-2-10:first-child {
+        max-width: 20%;
+        position: relative;
+        width: 100%;
+        display: inline-block;
+      }
+      .cols-2-10, .xs--cols-2-10, .sm--cols-2-10,
+      .md--cols-2-10, .ls--cols-2-10, .xl--cols-2-10 {
+        .item-grid:first-child {
+          max-width: 10.33333333%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 89.66666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-3-9, .xs--cols-3-9, .sm--cols-3-9,
+      .md--cols-3-9, .ls--cols-3-9, .xl--cols-3-9 {
+        .item-grid:first-child {
+          max-width: 25%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 75%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-4-8, .xs--cols-4-8, .sm--cols-4-8,
+      .md--cols-4-8, .ls--cols-4-8, .xl--cols-4-8 {
+        .item-grid:first-child {
+          max-width: 33.333333333%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 66.666666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-5-7, .xs--cols-5-7, .sm--cols-5-7,
+      .md--cols-5-7, .ls--cols-5-7, .xl--cols-5-7 {
+        .item-grid:first-child {
+          max-width: 41.666666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 66.666666667%;
+          position: relative;
+          width: 58.333333333%;
+          display: inline-block;
+        }
+      }
+      .cols-7-5, .xs--cols-7-5, .sm--cols-7-5,
+      .md--cols-7-5, .ls--cols-7-5, .xl--cols-7-5 {
+        .item-grid:first-child {
+          max-width: 66.666666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 41.666666667%;
+          position: relative;
+          width: 58.333333333%;
+          display: inline-block;
+        }
+      }
+      .cols-8-4, .xs--cols-8-4, .sm--cols-8-4,
+      .md--cols-8-4, .ls--cols-8-4, .xl--cols-8-4 {
+        .item-grid:first-child {
+          max-width: 66.666666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 33.333333333%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-9-3, .xs--cols-9-3, .sm--cols-9-3,
+      .md--cols-9-3, .ls--cols-9-3, .xl--cols-9-3 {
+        .item-grid:first-child {
+          max-width: 75%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 25%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+      .cols-10-2, .xs--cols-10-2, .sm--cols-10-2,
+      .md--cols-10-2, .ls--cols-10-2, .xl--cols-10-2 {
+        .item-grid:first-child {
+          max-width: 89.66666667%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+        .item-grid:last-child {
+          max-width: 10.33333333%;
+          position: relative;
+          width: 100%;
+          display: inline-block;
+        }
+      }
+
     }

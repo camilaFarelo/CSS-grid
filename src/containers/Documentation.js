@@ -5,6 +5,11 @@ class Documentation extends Component {
   render() {
     return(
       <div>
+        <div className="a">
+          <div className="b">
+            HOLA
+          </div>
+        </div>
         <div className="cols-3">
           <a href="/example1">{'Example layout 1'}</a>
           <a href="/example2">{'Example layout 2'}</a>
