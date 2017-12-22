@@ -171,7 +171,7 @@
     "2-8-2" : (
       "first-child" : 16.66666667%,
       "middle-child": 66.66666667%,
-      "last-child"  : 16.33333333%,
+      "last-child"  : 16.66666667%,
     ),
   );
 
@@ -250,7 +250,7 @@
   */
   @each $name, $data in $default-columns-divisions {
     //CSS class
-    .cssgrid {
+    .cssall {
       #{$css-class}cols-#{$name} {
         display: grid;
         display: -ms-grid;
@@ -265,7 +265,7 @@
       @include grid-media-query($size) {
         @each $name, $data in $default-columns-divisions {
            //CSS class
-          .cssgrid {
+          .cssall {
             #{$css-class}#{$size}--cols-#{$name} {
               justify-items: stretch;
               display: grid;
@@ -281,7 +281,7 @@
   //IE and Edge
   @each $name, $data in $ie-grid-divisions {
     //CSS class
-    .no-cssgrid {
+    .no-cssall {
       #{$css-class}cols-#{$name} {
         & > .item-grid {
           max-width: $data;
@@ -295,7 +295,7 @@
 
   @each $name, $data in $ie-grid-2-divisions {
     //CSS class
-    .no-cssgrid {
+    .no-cssall {
       #{$css-class}cols-#{$name} {
         .item-grid:first-child {
           max-width: map-get($data, "first-child");
@@ -319,7 +319,7 @@
       @include grid-media-query($size) {
         @each $name, $data in $ie-grid-2-divisions {
            //CSS class
-          .no-cssgrid {
+          .no-cssall {
             #{$css-class}#{$size}--cols-#{$name} {
               .item-grid:first-child {
                 max-width: map-get($data, "first-child");
@@ -345,7 +345,7 @@
       @include grid-media-query($size) {
         @each $name, $data in $ie-grid-divisions {
            //CSS class
-          .no-cssgrid {
+          .no-cssall {
             #{$css-class}#{$size}--cols-#{$name} {
               & > .item-grid {
                 max-width: $data;
@@ -362,7 +362,7 @@
 
   @each $name, $data in $ie-grid-3-divisions {
     //CSS class
-    .no-cssgrid {
+    .no-cssall {
       #{$css-class}cols-#{$name} {
         .item-grid:first-child {
           max-width: map-get($data, "first-child");
@@ -391,7 +391,7 @@
       @include grid-media-query($size) {
         @each $name, $data in $ie-grid-3-divisions {
            //CSS class
-          .no-cssgrid {
+          .no-cssall {
             #{$css-class}#{$size}--cols-#{$name} {
               .item-grid:first-child {
                 max-width: map-get($data, "first-child");
