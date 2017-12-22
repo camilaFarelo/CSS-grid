@@ -4,26 +4,42 @@ import FontAwesome from 'react-fontawesome';
 class Documentation extends Component {
   render() {
     return(
-      <div>
-        <div className="a">
-          <div className="b">
-            HOLA
-          </div>
-        </div>
+    <div className="documentation-body">
+        <h1>LAYOUTS EXAMPLES</h1>
         <div className="cols-3">
-          <a href="/example1">{'Example layout 1'}</a>
-          <a href="/example2">{'Example layout 2'}</a>
-          <a href="/example3">{'Example layout 3'}</a>
+          <a className="item-grid" href="/example1">{'Example layout 1'}</a>
+          <a className="item-grid" href="/example2">{'Example layout 2'}</a>
+          <a className="item-grid" href="/example3">{'Example layout 3'}</a>
         </div>
+        <hr></hr>
         <h1>FONT-AWESOME</h1>
+        <p>You can use any icon from Font-awesome:</p>
         <a href="http://fontawesome.io/icons/" target="_blank">Check all the icons</a>
-        <div>
+        <h3>{'How to include an icon?'}</h3>
+        <div className="panel code-example">
+          <h5 className="margin-0 ">
+            <span className="tags-icon">&lt;</span>
+            <span className="tags-color">FontAwesome</span>
+          </h5>
+          <p className="margin-0 p-left">
+            <span className="orange-color">name=</span>
+            <span className="green-color">"search"</span>
+          </p>
+          <p className="margin-0 p-left">
+            <span className="orange-color">size=</span>
+            <span className="green-color">"2x"</span>
+          </p>
+          <h5 className="margin-0 ">
+            <span className="tags-icon">&gt;</span>
+          </h5>
+        </div>
+        <div className="icons-container">
           <FontAwesome
             name='search'
             size='2x'
-            style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)'}}
           />
-      </div>
+        </div>
+        <hr></hr>
         <h1>CONTENT COLUMNS</h1>
         <div className="cols-1">
           <div className="item-grid panel">{'cols-1'}</div>
@@ -33,9 +49,9 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-2'}</div>
         </div>
         <div className="cols-3">
-          <div className="item-grid panel">{'cols-3'}</div>
-          <div className="item-grid panel">{'cols-3'}</div>
-          <div className="item-grid panel">{'cols-3'}</div>
+          <div className="item-grid panel">{'cols-3 sm--cols-2'}</div>
+          <div className="item-grid panel">{'cols-3 sm--cols-2'}</div>
+          <div className="item-grid panel">{'cols-3 sm--cols-2'}</div>
         </div>
         <div className="cols-4">
           <div className="item-grid panel">{'cols-4'}</div>
@@ -100,6 +116,7 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-10'}</div>
           <div className="item-grid panel">{'cols-10'}</div>
         </div>
+        <hr></hr>
         <h1>LAYOUT COLUMNS</h1>
         <div className="cols-2-10">
           <div className="item-grid panel">{'cols-2-10'}</div>
@@ -129,14 +146,29 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-10-2'}</div>
           <div className="item-grid panel">{'cols-10-2'}</div>
         </div>
-        <h1>Custom Grid</h1>
-          <div className="home">
-            <div className="item panel">{'item1'}</div>
-            <div className="item panel">{'item2'}</div>
-            <div className="item panel">{'item3'}</div>
-            <div className="item panel">{'item4'}</div>
-            <div className="item panel">{'item5'}</div>
-            <div className="item panel">{'item6'}</div>
+        <hr></hr>
+        <h1>RESPONSIVE GRID</h1>
+        <p>the grid have 5 breakpoints:</p>
+        <h4>xl--cols: min-width(2000px)</h4>
+        <h4>lg--cols: min-width(992px)</h4>
+        <h4>md--cols: min-width(768px)</h4>
+        <h4>sm--cols: min-width(576px)</h4>
+        <h4>xs--cols: min-width(480px)</h4>
+          <div className="lg--cols-4 md--cols-2 sm--cols-1 m-bot-40">
+            <div className="item-grid panel">{'.xl--cols-4 .md--cols-2 .sm--cols-1'}</div>
+            <div className="item-grid panel">{'.xl--cols-4 .md--cols-2 .sm--cols-1'}</div>
+            <div className="item-grid panel">{'.xl--cols-4 .md--cols-2 .sm--cols-1'}</div>
+            <div className="item-grid panel">{'.xl--cols-4 .md--cols-2 .sm--cols-1'}</div>
+          </div>
+          <div className="lg--cols-8 md--cols-4 sm--cols-2">
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
+            <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
           </div>
       </div>
     )

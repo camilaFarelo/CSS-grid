@@ -5,8 +5,10 @@ class Example2 extends Component {
     return(
       <div>
         <header className="header">{'header'}</header>
-        <div className="content-2">
-          <div className="content-item">{'content'}</div>
+        <div className="content-2 cols-2-8-2">
+          <div className="item-grid"></div>
+          <div className="item-grid content-item">{'content'}</div>
+          <div className="item-grid"></div>
         </div>
         <footer className="footer">{'footer'}</footer>
       </div>
