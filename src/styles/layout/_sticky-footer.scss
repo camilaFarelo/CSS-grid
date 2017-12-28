@@ -1,6 +1,9 @@
+
+// this should be removed as we got the reset
 html, body {
   height: 100%;
 }
+//==========================================
 
 .sticky-footer {
   min-height: 100%;
@@ -12,5 +15,5 @@ html, body {
 }
 
 .sticky-footer:after {
-  height: 108px; 
+  height: 108px;
 }

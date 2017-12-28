@@ -14,6 +14,11 @@
   margin-right: auto;
 }
 
+.margin-center,
+%margin-center{
+  margin: 0 auto;
+}
+
 $margin-custom: (
   "without" :        0px,
   "small" :          10px,

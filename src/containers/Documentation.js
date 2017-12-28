@@ -11,7 +11,7 @@ class Documentation extends Component {
           <a className="item-grid" href="/example2">{'Example layout 2'}</a>
           <a className="item-grid" href="/example3">{'Example layout 3'}</a>
         </div>
-        <hr></hr>
+        <hr/>
         <h1>FONT-AWESOME</h1>
         <p>You can use any icon from Font-awesome:</p>
         <a href="http://fontawesome.io/icons/" target="_blank">Check all the icons</a>
@@ -35,11 +35,11 @@ class Documentation extends Component {
         </div>
         <div className="icons-container">
           <FontAwesome
-            name='search'
-            size='2x'
+            name="search"
+            size="2x"
           />
         </div>
-        <hr></hr>
+        <hr/>
         <h1>CONTENT COLUMNS</h1>
         <div className="cols-1">
           <div className="item-grid panel">{'cols-1'}</div>
@@ -116,7 +116,7 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-10'}</div>
           <div className="item-grid panel">{'cols-10'}</div>
         </div>
-        <hr></hr>
+        <hr/>
         <h1>LAYOUT COLUMNS</h1>
         <div className="cols-2-10">
           <div className="item-grid panel">{'cols-2-10'}</div>
@@ -146,7 +146,7 @@ class Documentation extends Component {
           <div className="item-grid panel">{'cols-10-2'}</div>
           <div className="item-grid panel">{'cols-10-2'}</div>
         </div>
-        <hr></hr>
+        <hr/>
         <h1>RESPONSIVE GRID</h1>
         <p>the grid have 5 breakpoints:</p>
         <h4>xl--cols: min-width(2000px)</h4>
@@ -171,7 +171,7 @@ class Documentation extends Component {
             <div className="item-grid panel">{'.xl--cols-8 .md--cols-4 .sm--cols-2'}</div>
           </div>
       </div>
-    )
+    );
   }
 }
 

@@ -12,7 +12,7 @@ class Example3 extends Component {
         </div>
         <footer className="footer">{'footer'}</footer>
       </div>
-    )
+    );
   }
 }
 
